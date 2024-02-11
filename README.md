@@ -33,6 +33,20 @@ local server which can be enabled with
 [screepsmod-auth](https://github.com/ScreepsMods/screepsmod-auth). For xxscreeps servers this should
 be enabled by default.
 
+The final "/" at the end of the URI is important - you'll receive an error if you omit it.
+
+### Locating Screeps World client
+
+This package require Screeps World to be installed. The package attempts to locate the game files automatically, but if it cannot be done, then you must provide the location of the file with the "--package" argument. For example:
+
+`npx screepers-steamless-client --package ~/Screeps/package.nw`
+
+### Configuring host interface and port
+
+By default the package listens for connections on localhost (127.0.0.1) and on port 8080. These can be changed with the `--host` and `--port` parameters respectively. If you are running the steamless client on the same machine as your browser, these default settings might be fine. However if you run the client on the same host as the screeps private server, then you may need to ensure that the package listens on the correct outward-facing network interface, rather than localhost. If you want the client to listen on all interfaces on Linux, then you can use 0.0.0.0 as the host. For example:
+
+`npx screepers-steamless-client --host 0.0.0.0`
+
 ## Tips
 This client makes use of "guest mode" which is enabled by default in
 [xxscreeps](https://github.com/laverdet/xxscreeps/). This will provide you with a read-only view of
@@ -40,5 +54,7 @@ the server when you are not signed in. The client will show you as signed in as 
 icon will belong to the Invader user. To sign in with your Steam account you need to select "Sign
 Out" first, which will sign you out of Guest and bring you to the real login page. Click the Steam
 icon towards the bottom to sign-in with your Steam account and play the game as normal.
+
+
 
 ![Safari Example](./docs/safari.png)
